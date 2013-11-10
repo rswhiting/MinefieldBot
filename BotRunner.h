@@ -6,6 +6,7 @@
 
 class BotState;
 class ReadyState;
+
 class BotRunner {
 private:
     // current state
@@ -14,12 +15,17 @@ private:
     MotorController motorController;
     SensorController sensorController;
 public:
-
     void setup();
-
     void run();
-
     void setState(BotState *s);
+
+    MotorController getMotorController() {
+        return motorController;
+    }
+
+    SensorController getSensorController() {
+        return sensorController;
+    }
 };
 
 #endif

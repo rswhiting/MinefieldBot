@@ -6,15 +6,15 @@
 
 class MotorController {
 private:
-    enum WhichMotors {
-        LEFT, RIGHT, ALL
-    };
-    
     AF_DCMotor motor_br;
     AF_DCMotor motor_bl;
     AF_DCMotor motor_fl;
     AF_DCMotor motor_fr;
 public:
+
+    enum WhichMotors {
+        LEFT, RIGHT, ALL
+    };
 
     MotorController();
 

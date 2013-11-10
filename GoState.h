@@ -9,13 +9,9 @@ class GoState :
 public BotState {
 public:
 
-    GoState() {
-        Serial.println("Entering Go State");
-    }
+    GoState(BotRunner *b);
 
-    void run(BotRunner *b) {
-        Serial.println("Going...");
-    }
+    void run();
 };
 
 

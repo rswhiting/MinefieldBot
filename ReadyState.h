@@ -4,26 +4,27 @@
 #include <Arduino.h>
 #include "BotState.h"
 #include "GoState.h"
+#include "BotRunner.h"
 extern HardwareSerial Serial;
 
 class ReadyState :
 public BotState {
 public:
 
-    ReadyState() {
+    ReadyState(BotRunner *b) : BotState(b) {
         Serial.println("Entering Ready State");
     }
 
     virtual ~ReadyState() {
     }
 
-    void run(BotRunner *b) {
+    void run() {
         Serial.println("Nothing to do in Ready State");
-        moveToGoState(b);
+        moveToGoState();
     }
 
-    void moveToGoState(BotRunner *b) {
-        b->setState(new GoState());
+    void moveToGoState() {
+        context->setState(new GoState(context));
         delete this;
     }
 };

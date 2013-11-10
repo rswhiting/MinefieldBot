@@ -4,12 +4,12 @@
 extern HardwareSerial Serial;
 
 void BotRunner::setup() {
-    setState(new ReadyState());
+    setState(new ReadyState(this));
     Serial.println("BotRunner setup complete");
 }
 
 void BotRunner::run() {
-    state->run(this);
+    state->run();
 }
 
 void BotRunner::setState(BotState *s) {

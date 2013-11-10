@@ -1,13 +1,13 @@
 #include <Arduino.h>
 #include "BotRunner.h"
 
-BotRunner *runner;
+BotRunner runner;
 
 void setup() {
-    runner = new BotRunner();
-    runner->setup();
+    Serial.begin(9600);
+    runner.setup();
 }
 
 void loop() {
-    runner->run();
+    runner.run();
 }
