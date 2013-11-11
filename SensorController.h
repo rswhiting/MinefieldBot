@@ -10,7 +10,7 @@ private:
 public:
 
     enum WhichSensors {
-        LEFT, RIGHT, BOTH, NONE
+        RIGHT, LEFT, BOTH, NONE
     };
 
     SensorController() : rightWhisker(14, 50), leftWhisker(15, 50)

@@ -13,7 +13,7 @@ private:
 public:
 
     enum WhichMotors {
-        LEFT, RIGHT, ALL
+        RIGHT, LEFT, ALL
     };
 
     MotorController();

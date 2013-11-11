@@ -3,13 +3,6 @@
 class BotRunner;
 
 class BotState {
-    /*
-    Try these states:
-      ready
-      go
-      retry
-      done
-     */
 protected:
     BotRunner *context;
 public:
