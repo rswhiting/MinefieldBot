@@ -11,6 +11,9 @@ public:
 
     GoState(BotRunner *b);
 
+    virtual ~GoState() {
+    }
+    
     void run();
 };
 

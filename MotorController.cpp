@@ -2,6 +2,7 @@
 extern HardwareSerial Serial;
 
 MotorController::MotorController() : motor_br(1), motor_bl(2), motor_fl(3), motor_fr(4) {
+    Serial.println("Initializing MotorController");
     setSpeeds(ALL, 255);
     setRunModes(ALL, RELEASE);
 }
@@ -9,18 +10,15 @@ MotorController::MotorController() : motor_br(1), motor_bl(2), motor_fl(3), moto
 void MotorController::setSpeeds(WhichMotors w, uint8_t spd) {
     switch (w) {
         case LEFT:
-            Serial.println("setting left wheels to " + spd);
             motor_bl.setSpeed(spd);
             motor_fl.setSpeed(spd);
             break;
         case RIGHT:
-            Serial.println("setting right wheels to " + spd);
             motor_br.setSpeed(spd);
             motor_fr.setSpeed(spd);
             break;
         case ALL:
         default:
-            Serial.println("setting both wheels to " + spd);
             motor_br.setSpeed(spd);
             motor_bl.setSpeed(spd);
             motor_fl.setSpeed(spd);

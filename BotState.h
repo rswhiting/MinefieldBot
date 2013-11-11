@@ -7,7 +7,6 @@ class BotState {
     Try these states:
       ready
       go
-      veer
       retry
       done
      */
