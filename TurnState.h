@@ -9,9 +9,9 @@ extern HardwareSerial Serial;
 class TurnState :
 public BotState {
 private:
-    static const long HALT_TIME = 200;
-    static const long BACK_TIME = 1000;
-    static const long TURN_TIME = 1000;
+    static const long HALT_TIME = 100;
+    static const long BACK_TIME = 500;
+    static const long TURN_TIME = 500;
     SensorController::WhichSensors lastSensor;
     unsigned long subStateTimer;
     enum TurnSubState { HALT, BACK, TURN, DONE };

@@ -6,7 +6,7 @@
 TurnState::TurnState(BotRunner* b) : BotState(b), lastSensor(SensorController::RIGHT),
 subStateTimer(0), subState(HALT) {
     Serial.println("Entering Turn State");
-    SensorController::WhichSensors sensor = context->getSensorController().triggered();
+    SensorController::WhichSensors sensor = context->getSensorController().whiskerTriggered();
     Serial.print("Triggered on: ");
     switch (sensor) {
         case SensorController::RIGHT: Serial.println("Right");

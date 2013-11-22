@@ -1,37 +1,26 @@
 #ifndef __H_SENSOR_CONTROLLER__
 #define __H_SENSOR_CONTROLLER__
 #include <Bounce.h>
-extern HardwareSerial Serial;
 
 class SensorController {
 private:
-    Bounce rightWhisker;
-    Bounce leftWhisker;
+    static const int RIGHT_WHISKER = 14;
+    static const int LEFT_WHISKER = 15;
+    static const int GO_BUTTON = 16;
+    Bounce goButton;
+    //    Bounce rightWhisker;
+    //    Bounce leftWhisker;
 public:
 
     enum WhichSensors {
         RIGHT, LEFT, BOTH, NONE
     };
 
-    SensorController() : rightWhisker(14, 50), leftWhisker(15, 50)
-    {
-        Serial.println("Initializing SensorController");
-    }
+    SensorController();
 
-    WhichSensors triggered() {
-        rightWhisker.update();
-        leftWhisker.update();
-        int right = rightWhisker.read();
-        int left = leftWhisker.read();
-        if (right == LOW && left != LOW)
-            return RIGHT;
-        if (right != LOW && left == LOW)
-            return LEFT;
-        if (right == LOW && left == LOW)
-            return BOTH;
-        else
-            return NONE;
-    }
+    WhichSensors whiskerTriggered();
+
+    bool goTriggered();
 
 };
 

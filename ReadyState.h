@@ -9,18 +9,25 @@ extern HardwareSerial Serial;
 
 class ReadyState :
 public BotState {
+private:
+    static const long MIN_READY_TIME = 1000;
+    unsigned long timer;
 public:
 
     ReadyState(BotRunner *b) : BotState(b) {
         Serial.println("Entering Ready State");
+        context->getMotorController().setRunModes(MotorController::ALL, RELEASE);
+        timer = millis() + MIN_READY_TIME;
     }
 
     virtual ~ReadyState() {
     }
 
     void run() {
-        Serial.println("Nothing to do in Ready State");
-        moveToGoState();
+        if (millis() > timer && context->getSensorController().goTriggered()) {
+            Serial.println("Ready State: ok, let's go!");
+            moveToGoState();
+        }
     }
 
     void moveToGoState() {
